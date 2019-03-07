@@ -34,6 +34,7 @@ public:
     void setDirection(Snake::Direction d);
     void growSnake();
     void moveSnake();
+    bool pelletSnake(sf::Vector2f pellet);
   
     
 private:

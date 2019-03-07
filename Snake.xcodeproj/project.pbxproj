@@ -13,6 +13,8 @@
 		3BD52C362230C234003416EC /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BD52C342230C234003416EC /* Snake.cpp */; };
 		3BD52C382230C554003416EC /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3BD52C372230C554003416EC /* death.wav */; };
 		3BD52C3B2230CDAC003416EC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BD52C392230CDAC003416EC /* Game.cpp */; };
+		3BD52C3D2230ECA9003416EC /* eat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3BD52C3C2230ECA9003416EC /* eat.wav */; };
+		3BD52C402230ECB5003416EC /* Pellet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BD52C3E2230ECB5003416EC /* Pellet.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		3BD52C372230C554003416EC /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death.wav; sourceTree = "<group>"; };
 		3BD52C392230CDAC003416EC /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		3BD52C3A2230CDAC003416EC /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		3BD52C3C2230ECA9003416EC /* eat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eat.wav; sourceTree = "<group>"; };
+		3BD52C3E2230ECB5003416EC /* Pellet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pellet.cpp; sourceTree = "<group>"; };
+		3BD52C3F2230ECB5003416EC /* Pellet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pellet.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +73,8 @@
 				3BD52C352230C234003416EC /* Snake.hpp */,
 				3BD52C392230CDAC003416EC /* Game.cpp */,
 				3BD52C3A2230CDAC003416EC /* Game.hpp */,
+				3BD52C3E2230ECB5003416EC /* Pellet.cpp */,
+				3BD52C3F2230ECB5003416EC /* Pellet.hpp */,
 			);
 			path = Snake;
 			sourceTree = "<group>";
@@ -83,6 +90,7 @@
 		3BD52C262230C1EC003416EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3BD52C3C2230ECA9003416EC /* eat.wav */,
 				3BD52C372230C554003416EC /* death.wav */,
 				3BD52C2B2230C1EC003416EC /* sansation.ttf */,
 			);
@@ -146,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BD52C3D2230ECA9003416EC /* eat.wav in Resources */,
 				3BD52C2C2230C1EC003416EC /* sansation.ttf in Resources */,
 				3BD52C382230C554003416EC /* death.wav in Resources */,
 			);
@@ -181,6 +190,7 @@
 				3BD52C252230C1EC003416EC /* main.cpp in Sources */,
 				3BD52C222230C1EC003416EC /* ResourcePath.mm in Sources */,
 				3BD52C362230C234003416EC /* Snake.cpp in Sources */,
+				3BD52C402230ECB5003416EC /* Pellet.cpp in Sources */,
 				3BD52C3B2230CDAC003416EC /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

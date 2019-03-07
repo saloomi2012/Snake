@@ -10,6 +10,7 @@
 #define Game_hpp
 
 #include "Snake.hpp"
+#include "Pellet.hpp"
 
 class Game {
 public:
@@ -22,6 +23,7 @@ public:
 private:
     sf::RenderWindow win;
     Snake s;
+    Pellet p;
     sf::Clock clock;
     bool alive;
     bool grow;

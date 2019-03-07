@@ -22,16 +22,25 @@ Snake::Snake() {
 }
 
 bool Snake::collided() {
-    for(int i = 2; i < body.size(); i++) {
+    for(int i = 1; i < body.size(); i++) {
         if(body[i].getPosition() == body[0].getPosition()) {
             death.play();
-            sf::sleep(sf::milliseconds(1052));
+            sf::sleep(deathSound.getDuration());
             return true;
         }
     }
     return false;
 }
 
+
+bool Snake::pelletSnake(sf::Vector2f pellet) {
+    for(int i = 0; i < body.size(); i++) {
+        if(body[i].getPosition() == pellet) {
+            return true;
+        }
+    }
+    return false;
+}
 sf::Vector2f Snake::getHeadPosition() { 
     return body[0].getPosition();
 }
@@ -42,13 +51,33 @@ void Snake::drawSnake(sf::RenderWindow &win) {
 }
 
 void Snake::setDirection(Snake::Direction d) {
-    dir = d;
+
+    switch (d) {
+        case Up:
+            if(getHeadPosition().y - 32 != body[1].getPosition().y)
+                dir = d;
+            break;
+        case Down:
+            if(getHeadPosition().y + 32 != body[1].getPosition().y)
+                dir = d;
+            break;
+        case Left:
+            if(getHeadPosition().x - 32 != body[1].getPosition().x)
+                dir = d;
+            break;
+        case Right:
+            if(getHeadPosition().x + 32 != body[1].getPosition().x)
+                dir = d;
+            break;
+            
+    }
+    
 }
 
 void Snake::growSnake() {
     sf::RectangleShape rec = body[body.size()-1];
     if(body.size() > 1) {
-        std::cout << ">1 Ran" << std::endl;
+ 
         body.push_back(rec);
     } else {
         switch(dir) {
@@ -68,7 +97,7 @@ void Snake::growSnake() {
         
         body.push_back(rec);
         
-        std::cout << "1 Ran" << std::endl;
+     
     }
     
 }
@@ -80,26 +109,42 @@ void Snake::moveSnake() {
         case Up:
             if(getHeadPosition().y - 32 >= 0) {
                 body[0].setPosition(getHeadPosition().x , getHeadPosition().y - 32);
+                headMoved = true;
+            } else {
+                body[0].setPosition(getHeadPosition().x, 480-32);
+                headMoved = true;
             }
-            headMoved = true;
+            
             break;
         case Down:
-            if(getHeadPosition().y + 32 < 480) {
+            if(getHeadPosition().y + 32 < 480 ) {
                 body[0].setPosition(getHeadPosition().x, getHeadPosition().y + 32);
+                headMoved = true;
+            } else {
+                body[0].setPosition(getHeadPosition().x, 0);
+                headMoved = true;
             }
-            headMoved = true;
+            
             break;
         case Left:
-            if(getHeadPosition().x - 32 >= 0) {
+            if(getHeadPosition().x - 32 >= 0 ) {
                 body[0].setPosition(getHeadPosition().x - 32, getHeadPosition().y);
+                headMoved = true;
+            } else {
+                body[0].setPosition(640-32, getHeadPosition().y);
+                headMoved = true;
             }
-            headMoved = true;
+            
             break;
         case Right:
-            if(getHeadPosition().x + 32 < 640) {
+            if(getHeadPosition().x + 32 < 640 ) {
                 body[0].setPosition(getHeadPosition().x + 32, getHeadPosition().y);
+                headMoved = true;
+            } else {
+                body[0].setPosition(0, getHeadPosition().y);
+                headMoved = true;
             }
-            headMoved = true;
+            
             break;
     }
     
@@ -110,7 +155,8 @@ void Snake::moveSnake() {
         prevPos = temp;
         
     }
+        headMoved = false;
     }
     
-    std::cout << "Body size: " << body.size()<< std::endl;
+
 }

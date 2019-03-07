@@ -40,12 +40,29 @@ void Game::input() {
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         s.setDirection(Snake::Up);
+        if(clock.getElapsedTime().asMilliseconds() > 200) {
+            s.moveSnake();
+            clock.restart();
+        }
+        
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         s.setDirection(Snake::Down);
+        if(clock.getElapsedTime().asMilliseconds() > 200) {
+            s.moveSnake();
+            clock.restart();
+        }
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         s.setDirection(Snake::Left);
+        if(clock.getElapsedTime().asMilliseconds() > 200) {
+            s.moveSnake();
+            clock.restart();
+        }
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         s.setDirection(Snake::Right);
+        if(clock.getElapsedTime().asMilliseconds() > 200) {
+            s.moveSnake();
+            clock.restart();
+        }
     }
 }
 
@@ -58,10 +75,13 @@ void Game::update() {
         clock.restart();
     }
     
-    if(grow) {
-        s.growSnake();
-        grow = false;
-    }
+        if(p.collision(s.getHeadPosition())) {
+            s.growSnake();
+            p.generatePellet();
+            while(s.pelletSnake(p.getPellet().getPosition())) {
+                p.generatePellet();
+            }
+        }
     }
     
 }
@@ -69,6 +89,7 @@ void Game::update() {
 void Game::draw() {
     win.clear();
     s.drawSnake(win);
+    win.draw(p.getPellet());
     win.display();
     
 }
